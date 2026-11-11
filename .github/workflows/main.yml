@@ -1,0 +1,21 @@
+   name: Run my script
+
+   on:
+     push:
+       branches: [main]
+     workflow_dispatch:
+
+   jobs:
+     run-script:
+       runs-on: ubuntu-latest
+       steps:
+         - name: Check out code
+           uses: actions/checkout@v4
+
+         - name: Set up Node
+           uses: actions/setup-node@v4
+           with:
+             node-version: 22
+
+         - name: Run script
+           run: node jsSample.js
